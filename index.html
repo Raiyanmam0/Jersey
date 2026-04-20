@@ -392,6 +392,40 @@
     to { transform: scaleX(1); }
   }
 
+ /* ── HAMBURGER MENU ── */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    gap: 1rem;
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+}
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--white); }
@@ -405,8 +439,15 @@
 
 <!-- Nav -->
 <nav>
+<nav>
   <a class="nav-logo" href="#">Jersey Catalogue</a>
-  <ul class="nav-links">
+
+  <!-- NEW: Hamburger -->
+  <div class="menu-toggle" id="menu-toggle">
+    ☰
+  </div>
+
+  <ul class="nav-links" id="nav-links">
     <li><a href="#jerseys">Jerseys</a></li>
     <li><a href="#peripherals">Peripherals</a></li>
     <li><a href="#sizeguide">Size Guide</a></li>
